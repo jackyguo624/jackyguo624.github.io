@@ -1,16 +1,12 @@
 ---
 layout: page
 title: About me
-subtitle: Why you'd want to go on a date with me
+subtitle: Matter and Mind
 ---
 
-My name is Inigo Montoya. I have the following qualities:
+My name is Jiaqi Guo, currently a 2nd-year master student at Computer Science Department at SJTU.
+As a junior researcher in the field of Intelligent Speech Technology, I am attracted by the application of _human intelligence_ on intelligent speech interaction.
+My research interests currently include _Automatic Speech Recognition_ and _Speaker Diarization_.
 
-- I rock a great mustache
-- I'm extremely loyal to my family
-
-What else do you need?
-
-### my history
-
-To be honest, I'm having some trouble remembering right now, so why don't you just watch [my movie](http://en.wikipedia.org/wiki/The_Princess_Bride_%28film%29) and it will answer **all** your questions.
+### Curriculum vitae
+[You can download my curriculum vitae here.](https://github.com/jackyguo624/jackyguo624.github.io)
