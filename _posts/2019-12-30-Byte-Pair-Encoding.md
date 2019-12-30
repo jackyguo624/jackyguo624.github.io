@@ -1,10 +1,7 @@
 ---
 layout: post
 title: Byte Pair Encoding
-subtitle: Each post also has a subtitle
-gh-repo: daattali/beautiful-jekyll
-gh-badge: [star, fork, follow]
-tags: [test]
+tags: [nlp, subword]
 comments: true
 ---
 
@@ -24,3 +21,66 @@ Subword算法是一种重要的提升NLP性能的方法。
     可以有效地平衡词汇表大小和步数(编码句子所需的token数量)
 * 缺点：
     基于贪婪和确定的符号替换，不能提供带概率的多个分片结果
+
+### 主要算法
+BPE 使用文本统计所得，主要算法包括：
+1. 生成词表（Generate vocabulary）
+    * 每轮迭代：统计token pair 出现的次数，每次合并次数最高的pair成一个token
+    * 当迭代到达指定次数，所有的token就是词表
+2. 编码文本（Text to tokens）
+    * 将得到的词表按长度倒序排列
+    * 按词表顺序，使用greedy匹配文本中的character生成指定的token
+3. 解码文本 (Tokens to text)
+    * 将token合并
+
+#### 生成词表
+
+~~~
+import re, collections
+
+def get_vocab(filename):
+    vocab = collections.defaultdict(int)
+    with open(filename, 'r', encoding='utf-8') as fhand:
+        for line in fhand:
+            words = line.strip().split()
+            for word in words:
+                vocab[' '.join(list(word)) + ' </w>'] += 1
+
+    return vocab
+
+def get_stats(vocab):
+    pairs = collections.defaultdict(int)
+    for word, freq in vocab.items():
+        symbols = word.split()
+        for i in range(len(symbols)-1):
+            pairs[symbols[i],symbols[i+1]] += freq
+    return pairs
+
+def merge_vocab(pair, v_in):
+    v_out = {}
+    bigram = re.escape(' '.join(pair))
+    p = re.compile(r'(?<!\S)' + bigram + r'(?!\S)')
+    for word in v_in:
+        w_out = p.sub(''.join(pair), word)
+        v_out[w_out] = v_in[word]
+    return v_out
+
+num_merges = 1000
+for i in range(num_merges):
+    pairs = get_stats(vocab)
+    if not pairs:
+        break
+    best = max(pairs, key=pairs.get)
+    vocab = merge_vocab(best, vocab)
+    print('Iter: {}'.format(i))
+    print('Best pair: {}'.format(best))
+    tokens_frequencies, vocab_tokenization = get_tokens_from_vocab(vocab)
+    print('All tokens: {}'.format(tokens_frequencies.keys()))
+    print('Number of tokens: {}'.format(len(tokens_frequencies.keys())))
+    print('==========')
+~~~
+
+
+### Reference
+[深入理解NLP Subword算法：BPE、WordPiece、ULM](https://zhuanlan.zhihu.com/p/86965595)
+[Byte Pair Encoding](https://leimao.github.io/blog/Byte-Pair-Encoding/)
