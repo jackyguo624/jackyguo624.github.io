@@ -71,9 +71,9 @@ def tokenize_word(string, sorted_tokens, unknown_token='</u>'):
         break
     return string_tokens
 
-# vocab = {'l o w </w>': 5, 'l o w e r </w>': 2, 'n e w e s t </w>': 6, 'w i d e s t </w>': 3}
+vocab = {'l o w </w>': 5, 'l o w e r </w>': 2, 'n e w e s t </w>': 6, 'w i d e s t </w>': 3}
 
-vocab = get_vocab('pg16457.txt')
+#vocab = get_vocab('pg16457.txt')
 
 print('==========')
 print('Tokens Before BPE')
