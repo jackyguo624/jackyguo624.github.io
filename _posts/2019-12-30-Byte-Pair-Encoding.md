@@ -152,7 +152,10 @@ else:
     print(tokenize_word(string=word_given, sorted_tokens=sorted_tokens, unknown_token='</u>'))
 
 ~~~
-
+### 解码文本
+~~~
+''.join(tokens)
+~~~
 
 ### Reference
 [深入理解NLP Subword算法：BPE、WordPiece、ULM](https://zhuanlan.zhihu.com/p/86965595)
