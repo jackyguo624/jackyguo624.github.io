@@ -13,9 +13,9 @@ published: true
 
 这种bottleneck feature来自于autoencoder结构的中间层, 即下图中的**Code layer**
 
-<img src="/img/2020-02-12-bottle-feature-for-asr/encoder-decoder.png" alt="drawing" width="200"/>
+<img src="../_src/2020-02-12-bottle-feature-for-asr/encoder-decoder.png" alt="drawing" width="200"/>
 
-当autoencoder中的隐层层数过多时（2-4），通常不容易训练。解决的方法是逐层的pretrain [1](/img/2020-02-12-bottle-feature-for-asr/Reducing-the-Dimensionality-of-Data-with-Neural-Networks.pdf)
+当autoencoder中的隐层层数过多时（2-4），通常不容易训练。解决的方法是逐层的pretrain [1](../_src/2020-02-12-bottle-feature-for-asr/Reducing-the-Dimensionality-of-Data-with-Neural-Networks.pdf)
 
 ## bottleneck feature for ASR
 在这篇文章中，作者探讨了bottleneck feature对ASR的帮助
@@ -41,19 +41,19 @@ baseline 有三套系统分别是使用最大似然（maximum likihood）和最�
 
 以及为了对比，同时进行了5 层pretrained DNN-HMM系统（起输出为预测761个GMM状态的概率分布），结果为：
 
-<img src="/img/2020-02-12-bottle-feature-for-asr/baseline.png" alt="drawing" width="400"/>
+<img src="../_src/2020-02-12-bottle-feature-for-asr/baseline.png" alt="drawing" width="400"/>
 
 ### bottleneck 层数的实验
 
 使用bottleneck feature作为辅助特征的结构如下：
 
-<img src="/img/2020-02-12-bottle-feature-for-asr/bottleneck-structure.png" alt="drawing" width="400"/>
+<img src="../_src/2020-02-12-bottle-feature-for-asr/bottleneck-structure.png" alt="drawing" width="400"/>
 
 图中的autoencoder为5层的结构， GMM-HMM使用ML方法优化， 所提出的BN feature+MFCC的特征 会使用PCA进行去相关化后在作为辅助特征进行使用。
 
 为了验证层数和pretrain对所BN特征的影响，文中进行了关于层数和pretrain在dev集上的实验，如下：
 
-<img src="/img/2020-02-12-bottle-feature-for-asr/layers-pretrain.png" alt="drawing" width="400"/>
+<img src="../_src/2020-02-12-bottle-feature-for-asr/layers-pretrain.png" alt="drawing" width="400"/>
 
 实验结果可以发现，使用5层的含pretrain的BN特征性能最好，之后的实验均使用5层的autoencoder
 
@@ -69,17 +69,17 @@ baseline 有三套系统分别是使用最大似然（maximum likihood）和最�
 
 使用triphone state 的GMM-HMM（即senone）作为alignment的结果如第四行所示
 
-<img src="/img/2020-02-12-bottle-feature-for-asr/autoencoder-label.png" alt="drawing" width="400"/>
+<img src="../_src/2020-02-12-bottle-feature-for-asr/autoencoder-label.png" alt="drawing" width="400"/>
 
 
 ### 具体观察层数，pretrain和label对BN的影响：
 
-<img src="/img/2020-02-12-bottle-feature-for-asr/layers-pretrain-label.png" alt="drawing" width="400"/>
+<img src="../_src/2020-02-12-bottle-feature-for-asr/layers-pretrain-label.png" alt="drawing" width="400"/>
 
 
 ### 观察有没有BN对ASR的影响，以及训练准则对ASR的影响：
 
-<img src="/img/2020-02-12-bottle-feature-for-asr/BN-asr.png" alt="drawing" width="400"/>
+<img src="../_src/2020-02-12-bottle-feature-for-asr/BN-asr.png" alt="drawing" width="400"/>
 
 可以发现在使用ML准则时，有BN的情况下，在test测试集中有没有MFCC性能是一样的。
 
