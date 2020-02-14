@@ -13,9 +13,9 @@ published: true
 
 这种bottleneck feature来自于autoencoder结构的中间层, 即下图中的**Code layer**
 
-<img src="/img/2020-02-12-bottle-feature-for-ASR/encoder-decoder.png" alt="drawing" width="200"/>
+<img src="/img/2020-02-12-bottle-feature-for-asr/encoder-decoder.png" alt="drawing" width="200"/>
 
-当autoencoder中的隐层层数过多时（2-4），通常不容易训练。解决的方法是逐层的pretrain [1](/img/2020-02-12-bottle-feature-for-ASR/Reducing-the-Dimensionality-of-Data-with-Neural-Networks.pdf)
+当autoencoder中的隐层层数过多时（2-4），通常不容易训练。解决的方法是逐层的pretrain [1](/img/2020-02-12-bottle-feature-for-asr/Reducing-the-Dimensionality-of-Data-with-Neural-Networks.pdf)
 
 ## bottleneck feature for ASR
 在这篇文章中，作者探讨了bottleneck feature对ASR的帮助
@@ -42,9 +42,6 @@ baseline 有三套系统分别是使用最大似然（maximum likihood）和最�
 以及为了对比，同时进行了5 层pretrained DNN-HMM系统（起输出为预测761个GMM状态的概率分布），结果为：
 
 <img src="/img/2020-02-12-bottle-feature-for-asr/baseline.png" alt="drawing" width="400"/>
-
-![layers-pretrain.png]({{site.baseurl}}/img/layers-pretrain.png)
-
 
 ### bottleneck 层数的实验
 
