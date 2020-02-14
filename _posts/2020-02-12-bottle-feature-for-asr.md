@@ -1,8 +1,10 @@
 ---
 layout: post
 title: Improved Bottleneck Features Using Pretrained Deep Neural Networks的笔记
-tags: [bottleneck ]
+tags:
+  - bottleneck
 comments: true
+published: true
 ---
 
 
@@ -40,6 +42,9 @@ baseline 有三套系统分别是使用最大似然（maximum likihood）和最�
 以及为了对比，同时进行了5 层pretrained DNN-HMM系统（起输出为预测761个GMM状态的概率分布），结果为：
 
 <img src="/img/2020-02-12-bottle-feature-for-asr/baseline.png" alt="drawing" width="400"/>
+
+![layers-pretrain.png]({{site.baseurl}}/img/layers-pretrain.png)
+
 
 ### bottleneck 层数的实验
 
@@ -89,7 +94,3 @@ baseline 有三套系统分别是使用最大似然（maximum likihood）和最�
 使用unsupervised pretrain有2点好处：1.性能提升； 2. 当层数多时，比随机初始化性能要好
 
 使用senone alignment fine-tuned的和pretrain的autocoder所提出的BN 对与triphone的GMM-HHM性能最好
-
-
-
-
