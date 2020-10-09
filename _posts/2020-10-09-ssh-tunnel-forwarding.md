@@ -1,6 +1,6 @@
 ---
 layout: post
-title: SSH Porting Forwarding笔记
+title: SSH Port Forwarding笔记
 tags:
   - ssh port forwarding
   - ssh tunnel
