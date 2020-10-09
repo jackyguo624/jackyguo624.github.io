@@ -71,11 +71,9 @@ Remote forwarding 通常被用于将内网的服务`赋能`于外网的机器，
 ## 其他的一些
 1. Local forwarding 和 Remote forwarding 在localhost 和remotehost 都有独立ip时，可以替换使用。 但是通常情况下，只有它们中只有一个有独立ip，那么有独立ip的被用作remotehost， 然后根据需要选在使用local forwarding 还是remote forwarding
 2. 还有一个Dynamic forwarding 的端口转发， 它和local forwarding 类似，但是于local forwarding 将请求转发到farawayhost特定端口上不同，它只是将localhost 所连接的remotehost变成了localhost的一个socks5代理，代理上可以运行多种协议，例如浏览器可以socks代理处理HTTP HTTPS FTP协议。
-   
 ```bash
 ssh -D 9090 remotehost 
 ```
-
 这条命令的意思是remotehost 将被作为本地（localhost）的一个socks代理，端口是9090。 所有访问本地9090的请求将被发送到remote后，在流向互联网。
 
 ## 引用
