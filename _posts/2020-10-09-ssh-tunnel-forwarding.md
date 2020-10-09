@@ -39,7 +39,7 @@ ssh -L 5432:internalpostgres.com:5432 gateserver
 当前主机（localhost）的5432端口被转发到通过网关(gateserver)可以访问的内部的postgres数据库服务器（internalpostgres.com）的5432端口上。 这样A就可以通过访问localhost的5432端口来查询内部数据服务器中的数据了。
 
 
-Local forwarding 通常被用来穿透（penetrate）内网，访问内网服务，从当前主机（localhost）来看，整个过程是一个推（push）的动作。
+Local forwarding 通常被用来`穿透`（penetrate）内网，访问内网服务，从当前主机（localhost）来看，整个过程是一个推（push）的动作。
 
 ## Remote Forwarding
 remote forwarding 通常用于将本机能访问的内网的服务（或者说端口）暴露给外网。它的原理是 在本机(localhost)和 远端主机（remotehost/gatehost）之间搭建一条ssh 隧道，然后将来自远端主机特定端口， 这里称为sourcePort，的请求通过ssh隧道发送给本机（localhost）或者本机所能连接到的内部主机（nearhost）的特定端口，这里称为onPort。
@@ -55,7 +55,7 @@ ssh -R sourcePort:nearhost:onPort remotehost
 ### 具体例子
 Example 3:
 ```bash
-    ssh -R 80:localhost:80 tinyserver
+ssh -R 80:localhost:80 tinyserver
 ```
 访问tinyserver的80端口的请求，都将被转发到本机，如果本机上运行这web服务，那么访问tinyserver 80端口的请求将收到本机的回复
 
